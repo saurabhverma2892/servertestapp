@@ -7,18 +7,27 @@ let request = require("request");
 
 router.get('/test', function(req,res,next){
 
-
-    request.post({
-      url: 'http://marcanet.impi.gob.mx/marcanet/vistas/common/dashboard/marcanetDashboardBusquedas.pgi',
-      form: {
-        'frmBsqExp': 'frmBsqExp',
+    /*'frmBsqExp': 'frmBsqExp',
         'frmBsqExp:busquedaId2': 'frmBsqExp:busquedaId2',
         'frmBsqExp:expedienteId':'163766',
         'javax.faces.ViewState':'8301388994051642504:-2333538308694143700',
         'javax.faces.partial.ajax':'true',
         'javax.faces.partial.execute':'@all',
         'javax.faces.partial.render':'frmBsqExp:pnlBsqExp frmBsqExp:dlgListaExpedientes',
-        'javax.faces.source':'frmBsqExp:busquedaId2'
+        'javax.faces.source':'frmBsqExp:busquedaId2',
+*/
+
+    request.post({
+      url: 'http://marcanet.impi.gob.mx/marcanet/vistas/common/dashboard/marcanetDashboardBusquedas.pgi',
+      form: {
+        'frmBsqReg': 'frmBsqReg',
+        'frmBsqReg:busquedaId': 'frmBsqReg:busquedaId',
+        'frmBsqReg:registroId': '1080293',
+        'javax.faces.ViewState': '8470251173944865134:7163368146752327172',
+        'javax.faces.partial.ajax': 'true',
+        'javax.faces.partial.execute': '@all',
+        'javax.faces.partial.render': 'frmBsqReg:pnlBsqRegistro frmBsqReg:dlgListaRegNac',
+        'javax.faces.source': 'frmBsqReg:busquedaId'
       }
     }, function (err, httpResponse, body) { 
         console.log(body);
@@ -53,12 +62,9 @@ router.get('/test', function(req,res,next){
             16,string.search("</span></td>")
 
             )
-
           //res.send(string);
           res.send(body);
-
         });
-
     })
 
     
